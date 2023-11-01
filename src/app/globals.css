@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.icons {
+  @apply text-gray-900;
+}
+
+.links {
+  @apply bg-gray-50 text-gray-900 font-semibold font-sans  md:bg-gray-50 md:p-0 hover:text-[#506b75] transition-all ease-in-out duration-200 delay-75 p-2  rounded-sm;
+}
+.banner {
+  background-image: url("/bg.jpg");
+}
+
+.input-text {
+  @apply border border-gray-600 p-2 rounded-md;
+}
+
+tr,
+td {
+  font-family: sans-serif;
+  border: 1px solid #222;
+  text-align: center;
+
+  @apply uppercase text-sm p-2;
+}
