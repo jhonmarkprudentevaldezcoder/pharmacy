@@ -3,8 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { MdMedicationLiquid } from "react-icons/md";
 import { GiUpgrade } from "react-icons/gi";
-import { ImHome } from "react-icons/im";
-import { BsFillHouseGearFill, BsFillCartCheckFill } from "react-icons/bs";
+import { BsFillCartCheckFill } from "react-icons/bs";
 import { ImFolderDownload } from "react-icons/im";
 import { FaRegistered } from "react-icons/fa";
 import { AiOutlineLogin, AiFillContacts } from "react-icons/ai";
@@ -51,45 +50,6 @@ export const Nav = () => {
   return (
     <>
       <div id="header">
-        {/* <div
-          className={`${
-            !scrolledFromTop ? "h-8" : "h-8 top-0"
-          } bg-[#164e63] text-slate-300 flex flex-row justify-around `}
-        >
-          <div className="hidden md:flex ml-8   flex-row items-center gap-3 text-sm ">
-            <MdEmail className="icons" />
-            <p>kasiglahanvillagenhs.301446@deped.gov.phh</p>
-          </div>
-          {isLoggedIn ? (
-            <div className="mr-8 mt-1 flex flex-row items-center gap-3 md:gap-6 text-sm  ">
-              <span className="flex flex-row items-center gap-2">
-                <FaRegistered className="icons" />
-                <p>WELCOME</p>
-              </span>
-              <span className="flex flex-row items-center gap-2">
-                <AiOutlineLogin className="icons" />
-                <Link onClick={handleLogout} href={"/"}>
-                  LOGOUT
-                </Link>
-              </span>
-            </div>
-          ) : (
-            <div className="mr-8 mt-1 flex flex-row items-center gap-3 md:gap-6 text-sm  ">
-              <span className="flex flex-row items-center gap-2">
-                <FaRegistered className="icons" />
-                <Link href={"/Register"} onClick={() => setAuthNav(true)}>
-                  REGISTER
-                </Link>
-              </span>
-              <span className="flex flex-row items-center gap-2">
-                <AiOutlineLogin className="icons" />{" "}
-                <Link href={"/Login"} onClick={() => setAuthNav(true)}>
-                  LOGIN
-                </Link>
-              </span>
-            </div>
-          )}
-        </div> */}
         <header
           className={`fixed w-full z-50 bg-gray-50 flex md:gap-9 justify-between items-center px-4 md:px-12 transition-all duration-200 ${
             !scrolledFromTop ? "h-20 top-0" : "h-14 top-0 shadow-lg"
@@ -138,7 +98,7 @@ export const Nav = () => {
 
                 <Link
                   className="links"
-                  href="/"
+                  href="#medecines"
                   onClick={() => {
                     setNavOpen(false);
                     setAuthNav(false);
@@ -166,7 +126,7 @@ export const Nav = () => {
                 <BsFillCartCheckFill className="text-gray-800" />
                 <Link
                   className="links"
-                  href={authNav ? "/" : "#About"}
+                  href={authNav ? "/" : "/"}
                   onClick={() => {
                     setNavOpen(false);
                     setAuthNav(false);
@@ -180,7 +140,7 @@ export const Nav = () => {
                 <AiFillContacts className="text-gray-800" />
                 <Link
                   className="links"
-                  href={authNav ? "/" : "#Contact"}
+                  href={authNav ? "/" : "/"}
                   onClick={() => {
                     setNavOpen(false);
                     setAuthNav(false);
@@ -206,13 +166,13 @@ export const Nav = () => {
                 <div className="mr-8 mt-1 flex flex-row  items-center gap-3 md:gap-6 text-sm  ">
                   <span className="flex flex-row items-center gap-2 links">
                     <FaRegistered className="icons" />
-                    <Link href={"/Register"} onClick={() => setAuthNav(true)}>
+                    <Link href={"/"} onClick={() => setAuthNav(true)}>
                       REGISTER
                     </Link>
                   </span>
                   <span className="flex flex-row items-center gap-2 links">
                     <BiSolidLogIn className="icons" />
-                    <Link href={"/Login"} onClick={() => setAuthNav(true)}>
+                    <Link href={"/"} onClick={() => setAuthNav(true)}>
                       LOGIN
                     </Link>
                   </span>
@@ -227,7 +187,7 @@ export const Nav = () => {
                     <GiUpgrade className="text-amber-800" />
                     <Link
                       className="links"
-                      href="/Grade"
+                      href="/"
                       onClick={() => {
                         setNavOpen(false);
                         setAuthNav(false);
@@ -239,7 +199,7 @@ export const Nav = () => {
                   <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
                     <ImFolderDownload className="text-amber-800" />
                     <Link
-                      className="links"
+                      className=""
                       href={authNav ? "/" : "#Contact"}
                       onClick={() => {
                         setNavOpen(false);
