@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export const Footer = () => {
   const [scrolled, setScrolled] = useState(false);
-  const emailAddress = "kasiglahanvillagenhs.301446@deped.gov.ph";
+  const emailAddress = "markbrvaldez@gmail.com";
   const sendhandleClick = () => {
     window.location.href = `mailto:${emailAddress}`;
   };
@@ -34,12 +34,6 @@ export const Footer = () => {
         <div className="mx-auto w-full max-w-screen-xl">
           <div className="grid grid-cols-1 gap-2 px-9 py-6 lg:py-16 md:grid-cols-2 lg:grid-cols-3">
             <div>
-              {/*     <Image
-                src={"/images/logo.jpg"}
-                width={100}
-                height={100}
-                alt="logo"
-              /> */}
               <h2 className="mt-5">
                 <Image
                   src={"/images/pills.png"}
@@ -59,7 +53,7 @@ export const Footer = () => {
                     href="#"
                     className="hover:underline flex flex-row gap-3 items-center"
                   >
-                    <BsArrowBarRight className="icons text-xl" /> Home
+                    <BsArrowBarRight className="icons text-xl" /> MEDECINE
                   </Link>
                 </li>
                 <li className="mb-1 w-100 md:bg-[#164e63] md:p-0 bg-[#1c2f4e] p-3 rounded-md">
@@ -67,7 +61,8 @@ export const Footer = () => {
                     href="#About"
                     className="hover:underline  flex flex-row gap-3 items-center"
                   >
-                    <BsArrowBarRight className="icons text-xl" /> About us
+                    <BsArrowBarRight className="icons text-xl" />
+                    MEDECINE
                   </Link>
                 </li>
                 <li className="mb-1 w-100 md:bg-[#164e63] md:p-0 bg-[#1c2f4e] p-3 rounded-md">
@@ -76,7 +71,7 @@ export const Footer = () => {
                     href="https://www.facebook.com/DepEdTayoKVNHS301446"
                     className="hover:underline  flex flex-row gap-3 items-center"
                   >
-                    <BsArrowBarRight className="icons text-xl" /> Facebook
+                    <BsArrowBarRight className="icons text-xl" /> MEDECINE
                   </Link>
                 </li>
                 <li className="mb-1  w-100 md:bg-[#164e63] md:p-0 bg-[#1c2f4e] p-3 rounded-md">
@@ -112,13 +107,12 @@ export const Footer = () => {
               <ul className="text-slate-200 text-sm font-sans font-medium">
                 <li className="mb-2">
                   <span className="flex flex-row items-center gap-3 ">
-                    <ImLocation2 className="icons" /> Kasiglahan Village
-                    National High School , Rodriguez, Rizal
+                    <ImLocation2 className="icons" /> Montalban Rodriguez, Rizal
                   </span>
                 </li>
                 <li className="mb-2">
                   <span className="flex flex-row items-center gap-3">
-                    <MdEmail className="icons" /> kvnhs.@deped.gov.ph
+                    <MdEmail className="icons" /> storemacy@gmail.com
                   </span>
                 </li>
               </ul>
@@ -140,11 +134,11 @@ export const Footer = () => {
       <div className="py-2 w-100 bg-[#164e63e3]  md:flex md:items-center md:justify-around">
         <span className="text-sm text-gray-400  sm:text-center p-2">
           © 2023 - 2023. All Rights Reserved.
-          <span className="text-gray-300 ml-2  text-sm">K.V.N.H.S</span>
+          <span className="text-gray-300 ml-2  text-sm">STOREMACY</span>
         </span>
         <div className="flex mt-4 space-x-5    justify-center md:mt-0">
           <Link
-            href="https://www.facebook.com/DepEdTayoKVNHS301446"
+            href="https://www.facebook.com/markprudentevaldez"
             target="_blank"
             className="text-gray-400  hover:text-amber-600 text-sm"
           >

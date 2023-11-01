@@ -13,13 +13,14 @@ import Link from "next/link";
 export default function Welcome() {
   const [loading, setLoading] = useState(true);
 
-  const breakpoints = {
-    320: { slidesPerView: 1 },
-    480: { slidesPerView: 2 },
-    768: { slidesPerView: 3 },
-    992: { slidesPerView: 4 },
-    1200: { slidesPerView: 6 },
+  const breakpoints: { [key: string]: { slidesPerView: number } } = {
+    "320": { slidesPerView: 1 },
+    "480": { slidesPerView: 2 },
+    "768": { slidesPerView: 3 },
+    "992": { slidesPerView: 4 },
+    "1200": { slidesPerView: 6 },
   };
+
   const [slidesPerView, setSlidesPerView] = useState(
     breakpoints[1200].slidesPerView
   );
@@ -102,28 +103,8 @@ export default function Welcome() {
           disableOnInteraction: false, // Autoplay will not stop when user interacts with Swiper
         }}
       >
-        {products.map((product, index) => (
+        {products.map((product) => (
           <SwiperSlide key={product._id}>
-            {/*  <div className="flex w-full cursor-pointer h-80 hover:bg-gray-200 transition-all ease-in-out duration-300 delay-75 bg-gray-400 rounded-lg bg-opacity-50 py-8">
-              <div className="container px-4 mx-auto">
-                <div className="max-w-4xl mx-auto">
-                  <Image
-                    src={"/images/pills.png"}
-                    width={100}
-                    height={100}
-                    alt={product.Name}
-                    className="rounded-full m-auto"
-                  />
-                  <h1 className="text-base font-bold uppercase text-white mt-12">
-                    {product.Name}
-                  </h1>
-                  <div className="flex flex-col">
-                    <p className="text-gray-900">{product.Description}</p>
-                    <p className="text-white">₱ {product.Price}</p>
-                  </div>
-                </div>
-              </div>
-            </div> */}
             <div className="group my-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 hover:bg-gray-100 bg-white shadow-md">
               <Link
                 className="relative m flex h-40 overflow-hidden rounded-xl"
