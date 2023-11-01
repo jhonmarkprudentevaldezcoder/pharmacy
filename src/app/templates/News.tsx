@@ -34,11 +34,11 @@ export default function News() {
             </div>
             <div className="lg:w-5/12 order-2">
               <Image
-                src={"/images/test.png"}
+                src={"/images/mobile.webp"}
                 alt=""
                 width={100}
                 height={100}
-                className="rounded"
+                className="rounded h-full w-full object-fill"
               />
             </div>
           </div>
