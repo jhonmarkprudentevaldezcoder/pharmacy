@@ -98,7 +98,7 @@ export const Nav = () => {
 
                 <Link
                   className="links"
-                  href="#medecines"
+                  href={authNav ? "/" : "/"}
                   onClick={() => {
                     setNavOpen(false);
                     setAuthNav(false);
@@ -126,7 +126,7 @@ export const Nav = () => {
                 <BsFillCartCheckFill className="text-gray-800" />
                 <Link
                   className="links"
-                  href={authNav ? "/" : "/"}
+                  href={authNav ? "/Cart" : "/Cart"}
                   onClick={() => {
                     setNavOpen(false);
                     setAuthNav(false);
@@ -157,7 +157,7 @@ export const Nav = () => {
                   </span>
                   <span className="flex flex-row items-center gap-2">
                     <AiOutlineLogin className="icons" />
-                    <Link onClick={handleLogout} href={"/"}>
+                    <Link onClick={handleLogout} href={"/login"}>
                       LOGOUT
                     </Link>
                   </span>
@@ -166,13 +166,13 @@ export const Nav = () => {
                 <div className="mr-8 mt-1 flex flex-row  items-center gap-3 md:gap-6 text-sm  ">
                   <span className="flex flex-row items-center gap-2 links">
                     <FaRegistered className="icons" />
-                    <Link href={"/"} onClick={() => setAuthNav(true)}>
+                    <Link href={"/Register"} onClick={() => setAuthNav(true)}>
                       REGISTER
                     </Link>
                   </span>
                   <span className="flex flex-row items-center gap-2 links">
                     <BiSolidLogIn className="icons" />
-                    <Link href={"/"} onClick={() => setAuthNav(true)}>
+                    <Link href={"/Login"} onClick={() => setAuthNav(true)}>
                       LOGIN
                     </Link>
                   </span>

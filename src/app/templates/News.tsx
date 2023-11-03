@@ -38,7 +38,7 @@ export default function News() {
                 alt=""
                 width={100}
                 height={100}
-                className="rounded h-full w-full object-fill"
+                className="object-fill h-full w-full"
               />
             </div>
           </div>

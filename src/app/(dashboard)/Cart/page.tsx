@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
 
-export default function Hero() {
+export default function Cart() {
   return (
-    <div className="container mx-auto mt-10">
+    <div className="container mx-auto md:mt-32 mt-24">
       <div className="flex shadow-md my-10">
         <div className="w-3/4 bg-white px-10 py-10">
           <div className="flex justify-between border-b pb-8">
@@ -23,107 +23,6 @@ export default function Hero() {
             <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 ">
               Total
             </h3>
-          </div>
-          <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-            <div className="flex w-2/5">
-              <div className="w-20">
-                <Image
-                  height={100}
-                  width={100}
-                  className="h-24"
-                  src={"/images/pills.png"}
-                  alt=""
-                />
-              </div>
-              <div className="flex flex-col justify-between ml-4 flex-grow">
-                <span className="font-bold text-sm">Iphone 6S</span>
-                <span className="text-red-500 text-xs">Apple</span>
-                <a
-                  href="#"
-                  className="font-semibold hover:text-red-500 text-gray-500 text-xs"
-                >
-                  Remove
-                </a>
-              </div>
-            </div>
-            <div className="flex justify-center w-1/5">
-              <svg
-                className="fill-current text-gray-600 w-3"
-                viewBox="0 0 448 512"
-              >
-                <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-              </svg>
-
-              <input
-                className="mx-2 border text-center w-8"
-                type="text"
-                value="1"
-              />
-
-              <svg
-                className="fill-current text-gray-600 w-3"
-                viewBox="0 0 448 512"
-              >
-                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-              </svg>
-            </div>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $400.00
-            </span>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $400.00
-            </span>
-          </div>
-
-          <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-            <div className="flex w-2/5">
-              <div className="w-20">
-                <Image
-                  className="h-24"
-                  src={"/images/pills.png"}
-                  alt=""
-                  height={100}
-                  width={100}
-                />
-              </div>
-              <div className="flex flex-col justify-between ml-4 flex-grow">
-                <span className="font-bold text-sm">Xiaomi Mi 20000mAh</span>
-                <span className="text-red-500 text-xs">Xiaomi</span>
-                <a
-                  href="#"
-                  className="font-semibold hover:text-red-500 text-gray-500 text-xs"
-                >
-                  Remove
-                </a>
-              </div>
-            </div>
-            <div className="flex justify-center w-1/5">
-              <svg
-                className="fill-current text-gray-600 w-3"
-                viewBox="0 0 448 512"
-              >
-                <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-              </svg>
-
-              <input
-                className="mx-2 border text-center w-8"
-                type="text"
-                value="1"
-              />
-
-              <svg
-                className="fill-current text-gray-600 w-3"
-                viewBox="0 0 448 512"
-              >
-                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-              </svg>
-            </div>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $40.00
-            </span>
-            <span className="text-center w-1/5 font-semibold text-sm">
-              $40.00
-            </span>
           </div>
 
           <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
