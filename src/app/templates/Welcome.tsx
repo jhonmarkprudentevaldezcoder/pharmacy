@@ -9,9 +9,30 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
 import Link from "next/link";
+import Cookies from "js-cookie";
 
 export default function Welcome() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if the "token" cookie exists
+    const token = Cookies.get("token");
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  const addToCart = () => {
+    if (isLoggedIn) {
+      window.alert("added");
+    } else {
+      // Redirect the user to the login page
+      window.location.href = "/Login";
+    }
+  };
 
   const breakpoints: { [key: string]: { slidesPerView: number } } = {
     "320": { slidesPerView: 1 },
@@ -132,9 +153,9 @@ export default function Welcome() {
                   </p>
                 </div>
 
-                <Link
-                  href="#"
-                  className="flex items-center justify-center rounded-md bg-blue-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                <div
+                  onClick={addToCart}
+                  className="flex items-center cursor-pointer justify-center rounded-md bg-blue-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +172,7 @@ export default function Welcome() {
                     />
                   </svg>
                   Add to cart
-                </Link>
+                </div>
               </div>
             </div>
           </SwiperSlide>
