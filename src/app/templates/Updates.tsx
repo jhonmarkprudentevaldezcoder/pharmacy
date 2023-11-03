@@ -1,9 +1,28 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export default function Updates() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [products, setProducts] = useState<Products[]>([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  const addToCart = () => {
+    if (isLoggedIn) {
+      window.alert("added");
+    } else {
+      window.location.href = "/Login";
+    }
+  };
 
   type Products = {
     _id: string;
@@ -178,7 +197,9 @@ export default function Updates() {
                         />
                       </svg>
 
-                      <button className="text-sm">Add to cart</button>
+                      <button className="text-sm" onClick={addToCart}>
+                        Add to cart
+                      </button>
                     </div>
                   </div>
                 </div>

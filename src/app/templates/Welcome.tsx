@@ -16,7 +16,6 @@ export default function Welcome() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if the "token" cookie exists
     const token = Cookies.get("token");
     if (token) {
       setIsLoggedIn(true);
@@ -29,7 +28,6 @@ export default function Welcome() {
     if (isLoggedIn) {
       window.alert("added");
     } else {
-      // Redirect the user to the login page
       window.location.href = "/Login";
     }
   };
