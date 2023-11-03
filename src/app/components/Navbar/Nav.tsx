@@ -123,19 +123,6 @@ export const Nav = () => {
               </li>
  */}
 
-              <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
-                <AiFillContacts className="text-gray-800" />
-                <Link
-                  className="links"
-                  href={authNav ? "/" : "/"}
-                  onClick={() => {
-                    setNavOpen(false);
-                    setAuthNav(false);
-                  }}
-                >
-                  CONTACT
-                </Link>
-              </li>
               {isLoggedIn ? (
                 <></>
               ) : (
