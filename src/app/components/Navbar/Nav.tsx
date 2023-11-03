@@ -122,20 +122,7 @@ export const Nav = () => {
                 </Link>
               </li>
  */}
-              <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
-                <BsFillCartCheckFill className="text-gray-800" />
-                <Link
-                  className="links"
-                  href={authNav ? "/Cart" : "/Cart"}
-                  onClick={() => {
-                    setNavOpen(false);
-                    setAuthNav(false);
-                  }}
-                >
-                  CART
-                </Link>
-                <p className="text-red-900 font-bold text-base">0</p>
-              </li>
+
               <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
                 <AiFillContacts className="text-gray-800" />
                 <Link
@@ -150,18 +137,7 @@ export const Nav = () => {
                 </Link>
               </li>
               {isLoggedIn ? (
-                <div className="mr-8 mt-1 flex flex-row items-center gap-3 md:gap-6 text-sm  ">
-                  <span className="flex flex-row items-center gap-2">
-                    <FaRegistered className="icons" />
-                    <p>CART</p>
-                  </span>
-                  <span className="flex flex-row items-center gap-2">
-                    <AiOutlineLogin className="icons" />
-                    <Link onClick={handleLogout} href={"/login"}>
-                      LOGOUT
-                    </Link>
-                  </span>
-                </div>
+                <></>
               ) : (
                 <div className="mr-8 mt-1 flex flex-row  items-center gap-3 md:gap-6 text-sm  ">
                   <span className="flex flex-row items-center gap-2 links">
@@ -184,29 +160,33 @@ export const Nav = () => {
               ) : (
                 <div className="flex flex-row">
                   <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
-                    <GiUpgrade className="text-amber-800" />
+                    <BsFillCartCheckFill className="text-gray-800" />
                     <Link
                       className="links"
-                      href="/"
+                      href={authNav ? "/Cart" : "/Cart"}
                       onClick={() => {
                         setNavOpen(false);
                         setAuthNav(false);
                       }}
                     >
-                      VIEW GRADES
+                      CART
                     </Link>
+                    <p className="text-red-900 font-bold text-base">0</p>
                   </li>
-                  <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
-                    <ImFolderDownload className="text-amber-800" />
+                  <li
+                    onClick={handleLogout}
+                    className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4"
+                  >
+                    <AiOutlineLogin className="icons" />
                     <Link
-                      className=""
+                      className="text-gray-800"
                       href={authNav ? "/" : "#Contact"}
                       onClick={() => {
                         setNavOpen(false);
                         setAuthNav(false);
                       }}
                     >
-                      DOWNLOAD APP
+                      LOG OUT
                     </Link>
                   </li>
                 </div>
