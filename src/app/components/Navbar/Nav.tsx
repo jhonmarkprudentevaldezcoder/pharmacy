@@ -223,13 +223,6 @@ export const Nav = () => {
                     >
                       HISTORY
                     </Link>
-                    {totalProducts !== null ? (
-                      <p className="text-red-900 font-bold text-base">
-                        {totalProducts}
-                      </p>
-                    ) : (
-                      <p>Loading cart total...</p>
-                    )}
                   </li>
                   <li
                     onClick={handleLogout}

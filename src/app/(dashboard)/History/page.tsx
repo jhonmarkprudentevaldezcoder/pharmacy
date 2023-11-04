@@ -82,53 +82,6 @@ export default function History() {
     return () => clearInterval(intervalId);
   }, [userToken]);
 
-  const handleRemoveFromCart = async (productId: String) => {
-    try {
-      const response = await fetch(
-        `https://pharmacyapiendpoint.onrender.com/cart/remove/${userToken}/${productId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.ok) {
-        console.log("Product removed from the cart successfully");
-        // Add any additional logic you need here
-      } else {
-        console.error("Error removing the product from the cart");
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
-  };
-
-  const handleCheckOut = async () => {
-    try {
-      const response = await fetch(
-        `https://pharmacyapiendpoint.onrender.com/checkout/${userToken}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.ok) {
-        window.location.href = "/Cart";
-        console.log("Product removed from the cart successfully");
-        // Add any additional logic you need here
-      } else {
-        console.error("Error removing the product from the cart");
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
-  };
-
   return (
     <div className="container mx-auto md:mt-32 mt-24">
       <div className="flex shadow-md my-10">
@@ -186,14 +139,6 @@ export default function History() {
                     <span className="text-red-500 text-xs">
                       {product.productId.Description}
                     </span>
-                    <button
-                      onClick={() =>
-                        handleRemoveFromCart(product.productId._id)
-                      }
-                      className="font-semibold hover:text-red-500 text-gray-500 text-xs"
-                    >
-                      Remove
-                    </button>
                   </div>
                 </div>
                 <div className="flex justify-center w-1/5">

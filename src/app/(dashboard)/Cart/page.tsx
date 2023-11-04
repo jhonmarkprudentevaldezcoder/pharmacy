@@ -140,18 +140,14 @@ export default function Cart() {
               {totalProducts !== null ? (
                 <p>{totalProducts}</p>
               ) : (
-                <p>Loading total...</p>
+                <p>---------...</p>
               )}
             </h2>
           </div>
           <div className="flex mt-10 mb-5">
             <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
               Product Details{" "}
-              {checkOutID !== null ? (
-                <p>{checkOutID}</p>
-              ) : (
-                <p>Loading total...</p>
-              )}
+              {checkOutID !== null ? <p>{checkOutID}</p> : <p>---------...</p>}
             </h3>
             <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 ">
               Quantity
@@ -235,14 +231,14 @@ export default function Cart() {
               {totalProducts !== null ? (
                 <p> Items {totalProducts}</p>
               ) : (
-                <p>Loading total...</p>
+                <p>---------...</p>
               )}
             </span>
             <span className="font-semibold text-sm">
               {totalPrice !== null ? (
                 <p>₱{parseInt(totalPrice).toFixed(2)}</p>
               ) : (
-                <p>Loading total...</p>
+                <p>---------...</p>
               )}
             </span>
           </div>
@@ -263,7 +259,7 @@ export default function Cart() {
                 {totalPrice !== null ? (
                   <p>₱{(parseInt(totalPrice) + 50).toFixed(2)}</p>
                 ) : (
-                  <p>Loading total...</p>
+                  <p>---------...</p>
                 )}
               </span>
             </div>
