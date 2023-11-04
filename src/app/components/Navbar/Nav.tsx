@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { MdMedicationLiquid } from "react-icons/md";
+import { MdMedicationLiquid, MdWorkHistory } from "react-icons/md";
 import { GiUpgrade } from "react-icons/gi";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { ImFolderDownload } from "react-icons/im";
@@ -202,6 +202,26 @@ export const Nav = () => {
                       }}
                     >
                       CART
+                    </Link>
+                    {totalProducts !== null ? (
+                      <p className="text-red-900 font-bold text-base">
+                        {totalProducts}
+                      </p>
+                    ) : (
+                      <p>Loading cart total...</p>
+                    )}
+                  </li>
+                  <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
+                    <MdWorkHistory className="text-gray-800" />
+                    <Link
+                      className="links"
+                      href={authNav ? "/History" : "/History"}
+                      onClick={() => {
+                        setNavOpen(false);
+                        setAuthNav(false);
+                      }}
+                    >
+                      HISTORY
                     </Link>
                     {totalProducts !== null ? (
                       <p className="text-red-900 font-bold text-base">
