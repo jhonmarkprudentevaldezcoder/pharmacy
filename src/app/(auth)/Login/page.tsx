@@ -35,6 +35,7 @@ export default function Login() {
         Cookies.set("token", responseData.token);
         Cookies.set("userId", responseData.userId);
         console.log(response);
+
         setemail("");
         setpassword("");
         window.location.href = "/";

@@ -1,14 +1,22 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { addToMyCart } from "../utils/cart";
 
 export default function Updates() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [products, setProducts] = useState<Products[]>([]);
   const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [userToken, setUserToken] = useState<string | undefined>(
+    Cookies.get("userId") || ""
+  );
 
   useEffect(() => {
     const token = Cookies.get("token");
+    const userIdToken = Cookies.get("userId");
+    setUserToken(userIdToken || "");
     if (token) {
       setIsLoggedIn(true);
     } else {
@@ -56,6 +64,27 @@ export default function Updates() {
 
     fetchProducts();
   }, []);
+
+  const handleAddToCart = async (productId: string) => {
+    if (isLoggedIn) {
+      try {
+        const userId = userToken; // The value of userToken can be undefined
+        if (userId) {
+          const result = await addToMyCart(productId, quantity, userId);
+          console.log("Product added to cart:", result);
+          setSelectedProduct(productId);
+          console.log(selectedProduct);
+        } else {
+          // Handle the case where userToken is undefined
+          console.error("User is not logged in. User token is undefined.");
+        }
+      } catch (error) {
+        console.error("Error adding product to cart:", error);
+      }
+    } else {
+      window.location.href = "/Login";
+    }
+  };
 
   if (loading) {
     return (
@@ -212,8 +241,13 @@ export default function Updates() {
                       />
                     </svg>
 
-                    <div className="text-sm cursor-pointer" onClick={addToCart}>
-                      Add to cart
+                    <div
+                      className="text-sm cursor-pointer"
+                      onClick={() => handleAddToCart(product._id)}
+                    >
+                      {selectedProduct === product._id
+                        ? "Added to Cart"
+                        : "Add to Cart"}
                     </div>
                   </div>
                 </div>

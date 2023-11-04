@@ -11,11 +11,21 @@ import { BiSolidLogIn } from "react-icons/bi";
 import Image from "next/image";
 import Cookies from "js-cookie";
 
+interface CartData {
+  cart: {
+    // Define the shape of your cart data
+  };
+  totalCount: number;
+}
 export const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [scrolledFromTop, setScrolledFromTop] = useState(false);
   const [authNav, setAuthNav] = useState(false);
+  const [totalProducts, setTotalProducts] = useState<number | null>(null);
+  const [userToken, setUserToken] = useState<string | undefined>(
+    Cookies.get("userId") || "2323"
+  );
 
   const handleLogout = () => {
     Cookies.remove("token");
@@ -24,7 +34,8 @@ export const Nav = () => {
   };
 
   useEffect(() => {
-    // Check if the "token" cookie exists
+    const userIdToken = Cookies.get("userId");
+    setUserToken(userIdToken || "323");
     const token = Cookies.get("token");
     if (token) {
       setIsLoggedIn(true);
@@ -32,6 +43,40 @@ export const Nav = () => {
       setIsLoggedIn(false);
     }
   }, []);
+
+  /* useEffect(() => {
+    fetch(`https://pharmacyapiendpoint.onrender.com/cart/${userToken}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const totalCount = data.totalCount;
+        setTotalProducts(totalCount);
+        console.log(totalProducts);
+      })
+      .catch((error) => console.error("Error fetching cart total:", error));
+  }, []); */
+
+  useEffect(() => {
+    // Function to fetch cart total
+    const fetchCartTotal = () => {
+      fetch(`https://pharmacyapiendpoint.onrender.com/cart/${userToken}`)
+        .then((response) => response.json())
+        .then((data: CartData) => {
+          const totalCount = data.totalCount;
+          setTotalProducts(totalCount);
+          console.log(totalProducts);
+        })
+        .catch((error) => console.error("Error fetching cart total:", error));
+    };
+
+    // Initial fetch when the component mounts
+    fetchCartTotal();
+
+    // Set up an interval to fetch data every 2 seconds
+    const intervalId = setInterval(fetchCartTotal, 1000);
+
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, [userToken]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -158,7 +203,13 @@ export const Nav = () => {
                     >
                       CART
                     </Link>
-                    <p className="text-red-900 font-bold text-base">0</p>
+                    {totalProducts !== null ? (
+                      <p className="text-red-900 font-bold text-base">
+                        {totalProducts}
+                      </p>
+                    ) : (
+                      <p>Loading cart total...</p>
+                    )}
                   </li>
                   <li
                     onClick={handleLogout}
