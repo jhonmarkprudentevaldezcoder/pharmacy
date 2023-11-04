@@ -38,6 +38,7 @@ export default function Cart() {
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
   const [totalProducts, setTotalProducts] = useState<number | null>(null);
   const [totalPrice, setTotalPrice] = useState<string | null>(null);
+  const [checkOutID, setcheckOutID] = useState<string | null>(null);
   const [userToken, setUserToken] = useState<string | undefined>(
     Cookies.get("userId") || "2323"
   );
@@ -62,8 +63,10 @@ export default function Cart() {
         .then((data: CartData) => {
           const totalCount = data.totalCount;
           const totalCartPrice = data.cart.totalPrice;
+          const idCheckOut = data.cart._id;
           setTotalPrice(String(totalCartPrice));
           setTotalProducts(totalCount);
+          setcheckOutID(idCheckOut);
           setCartProducts(data.cart.products);
         })
         .catch((error) => console.error("Error fetching cart total:", error));
@@ -102,6 +105,30 @@ export default function Cart() {
     }
   };
 
+  const handleCheckOut = async () => {
+    try {
+      const response = await fetch(
+        `https://pharmacyapiendpoint.onrender.com/checkout/${userToken}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        window.location.href = "/Cart";
+        console.log("Product removed from the cart successfully");
+        // Add any additional logic you need here
+      } else {
+        console.error("Error removing the product from the cart");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
   return (
     <div className="container mx-auto md:mt-32 mt-24">
       <div className="flex shadow-md my-10">
@@ -119,7 +146,12 @@ export default function Cart() {
           </div>
           <div className="flex mt-10 mb-5">
             <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
-              Product Details
+              Product Details{" "}
+              {checkOutID !== null ? (
+                <p>{checkOutID}</p>
+              ) : (
+                <p>Loading total...</p>
+              )}
             </h3>
             <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 ">
               Quantity
@@ -165,22 +197,16 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="flex justify-center w-1/5">
-                  <input
-                    className="mx-2 border text-center w-8"
-                    type="text"
-                    value={product.quantity} // Use the actual quantity from the cart
-                  />
+                  <p className="mx-2  text-center w-8">{product.quantity}</p>
                 </div>
 
                 <span className="text-center w-1/5 font-semibold text-sm">
                   {`₱${product.productId.Price}`}{" "}
-                  {/* Display the individual product price */}
                 </span>
                 <span className="text-center w-1/5 font-semibold text-sm">
                   {`₱${(
                     parseInt(product.productId.Price) * product.quantity
                   ).toFixed(2)}`}
-                  {/* Calculate the total price for this product */}
                 </span>
               </div>
             ))}
@@ -241,7 +267,10 @@ export default function Cart() {
                 )}
               </span>
             </div>
-            <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
+            <button
+              onClick={() => handleCheckOut()}
+              className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full"
+            >
               Checkout
             </button>
           </div>
