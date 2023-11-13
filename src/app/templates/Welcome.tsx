@@ -10,10 +10,16 @@ import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
 import Link from "next/link";
 import Cookies from "js-cookie";
+import { addToMyCart } from "../utils/cart";
 
 export default function Welcome() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [userToken, setUserToken] = useState<string | undefined>(
+    Cookies.get("userId") || ""
+  );
 
   useEffect(() => {
     const token = Cookies.get("token");
@@ -104,6 +110,27 @@ export default function Welcome() {
     fetchProducts();
   }, []);
 
+  const handleAddToCart = async (productId: string) => {
+    if (isLoggedIn) {
+      try {
+        const userId = userToken; // The value of userToken can be undefined
+        if (userId) {
+          const result = await addToMyCart(productId, quantity, userId);
+          console.log("Product added to cart:", result);
+          setSelectedProduct(productId);
+          console.log(selectedProduct);
+        } else {
+          // Handle the case where userToken is undefined
+          console.error("User is not logged in. User token is undefined.");
+        }
+      } catch (error) {
+        console.error("Error adding product to cart:", error);
+      }
+    } else {
+      window.location.href = "/Login";
+    }
+  };
+
   if (loading) {
     return (
       <div className=" shadow rounded-md p-4  w-full mx-auto px-32">
@@ -168,7 +195,7 @@ export default function Welcome() {
                 </div>
 
                 <div
-                  onClick={addToCart}
+                  onClick={() => handleAddToCart(product._id)}
                   className="flex items-center cursor-pointer justify-center rounded-md bg-blue-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
                 >
                   <svg
@@ -185,7 +212,9 @@ export default function Welcome() {
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
-                  Add to cart
+                  {selectedProduct === product._id
+                    ? "Added to Cart"
+                    : "Add to Cart"}
                 </div>
               </div>
             </div>
