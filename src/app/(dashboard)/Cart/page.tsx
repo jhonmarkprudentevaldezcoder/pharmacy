@@ -124,8 +124,8 @@ export default function Cart() {
 
   return (
     <div className="container mx-auto md:mt-32 mt-24">
-      <div className="flex shadow-md my-10">
-        <div className="w-3/4 bg-white px-10 py-10">
+      <div className="flex flex-col shadow-md my-10 border border-red-900  lg:flex-row">
+        <div className="lg:w-3/4 bg-white md:p-5 lg:px-10 lg:py-10">
           <div className="flex justify-between border-b pb-8">
             <h1 className="font-semibold text-2xl">Shopping Cart</h1>
             <h2 className="font-semibold text-2xl">
@@ -133,14 +133,14 @@ export default function Cart() {
               {totalProducts !== null ? (
                 <p>{totalProducts}</p>
               ) : (
-                <p>---------...</p>
+                <p>---------</p>
               )}
             </h2>
           </div>
-          <div className="flex mt-10 mb-5">
+          <div className="flex  mt-10 mb-5">
             <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
               Product Details{" "}
-              {checkOutID !== null ? <p>{checkOutID}</p> : <p>---------...</p>}
+              {checkOutID !== null ? <p>{checkOutID}</p> : <p>-----</p>}
             </h3>
             <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 ">
               Quantity
@@ -215,7 +215,7 @@ export default function Cart() {
           </Link>
         </div>
 
-        <div id="summary" className="w-1/4 px-8 py-10">
+        <div id="summary" className="md:w-full lg:w-1/4 px-8 py-10">
           <h1 className="font-semibold text-2xl border-b pb-8">
             Order Summary
           </h1>
