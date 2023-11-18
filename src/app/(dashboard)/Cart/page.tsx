@@ -140,7 +140,7 @@ export default function Cart() {
           <div className="flex  mt-10 mb-5">
             <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
               Product Details{" "}
-              {checkOutID !== null ? <p>{checkOutID}</p> : <p>-----</p>}
+              {checkOutID !== null ? <p>{checkOutID}</p> : <p></p>}
             </h3>
             <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 ">
               Quantity
@@ -203,7 +203,7 @@ export default function Cart() {
 
           <Link
             href="/"
-            className="flex font-semibold text-indigo-600 text-sm mt-10"
+            className="flex font-semibold text-indigo-600 text-sm mt-10 p-6da"
           >
             <svg
               className="fill-current mr-2 text-indigo-600 w-4"
