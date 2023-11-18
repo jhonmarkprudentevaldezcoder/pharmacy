@@ -71,14 +71,9 @@ export default function Cart() {
         })
         .catch((error) => console.error("Error fetching cart total:", error));
     };
-
-    // Initial fetch when the component mounts
     fetchCartTotal();
 
-    // Set up an interval to fetch data every 2 seconds
     const intervalId = setInterval(fetchCartTotal, 1000);
-
-    // Cleanup the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, [userToken]);
 
@@ -96,7 +91,6 @@ export default function Cart() {
 
       if (response.ok) {
         console.log("Product removed from the cart successfully");
-        // Add any additional logic you need here
       } else {
         console.error("Error removing the product from the cart");
       }
@@ -120,7 +114,6 @@ export default function Cart() {
       if (response.ok) {
         window.location.href = "/Cart";
         console.log("Product removed from the cart successfully");
-        // Add any additional logic you need here
       } else {
         console.error("Error removing the product from the cart");
       }

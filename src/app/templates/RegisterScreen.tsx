@@ -10,6 +10,9 @@ export default function RegisterScreen() {
   const [Password1, setPassword1] = useState<string>("");
   const [Password2, setPassword2] = useState<string>("");
   const [FirstName, setFirstName] = useState<string>("");
+
+  const [Contact, setContact] = useState<string>("");
+
   const [MiddleName, setMiddleName] = useState<string>("");
   const [Surname, setSurname] = useState<string>("");
   const [Gender, setGender] = useState<string>("");
@@ -32,6 +35,7 @@ export default function RegisterScreen() {
       ID,
       RFID,
       Username,
+      Contact,
       Email,
       Password: Password1, // Use one of the Passwords
       FirstName,
@@ -62,6 +66,7 @@ export default function RegisterScreen() {
         setRfid("");
         setUsername("");
         setEmail("");
+        setContact("");
         setPassword1("");
         setPassword2("");
         setFirstName("");
@@ -170,6 +175,14 @@ export default function RegisterScreen() {
                 className="input-text"
                 value={Surname}
                 onChange={(e) => setSurname(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Contact"
+                className="input-text"
+                value={Contact}
+                onChange={(e) => setContact(e.target.value)}
                 required
               />
               <input

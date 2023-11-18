@@ -60,28 +60,20 @@ export default function Welcome() {
     Image: string;
   };
   useEffect(() => {
-    // Function to update slidesPerView based on screen width
     const updateSlidesPerView = () => {
       const screenWidth = window.innerWidth;
 
-      // Find the matching breakpoint for the current screen width
       const breakpoint = Object.keys(breakpoints)
         .reverse()
         .find((bp) => screenWidth >= parseInt(bp));
 
       if (breakpoint) {
-        // Set the number of slides per view based on the matching breakpoint
         setSlidesPerView(breakpoints[breakpoint].slidesPerView);
       }
     };
 
-    // Initial update
     updateSlidesPerView();
-
-    // Add an event listener to update slidesPerView when the window size changes
     window.addEventListener("resize", updateSlidesPerView);
-
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("resize", updateSlidesPerView);
     };
@@ -113,14 +105,13 @@ export default function Welcome() {
   const handleAddToCart = async (productId: string) => {
     if (isLoggedIn) {
       try {
-        const userId = userToken; // The value of userToken can be undefined
+        const userId = userToken;
         if (userId) {
           const result = await addToMyCart(productId, quantity, userId);
           console.log("Product added to cart:", result);
           setSelectedProduct(productId);
           console.log(selectedProduct);
         } else {
-          // Handle the case where userToken is undefined
           console.error("User is not logged in. User token is undefined.");
         }
       } catch (error) {
@@ -161,8 +152,8 @@ export default function Welcome() {
         spaceBetween={50}
         slidesPerView={slidesPerView}
         autoplay={{
-          delay: 8000, // Delay in milliseconds between each slide
-          disableOnInteraction: false, // Autoplay will not stop when user interacts with Swiper
+          delay: 8000,
+          disableOnInteraction: false,
         }}
       >
         {products.map((product) => (

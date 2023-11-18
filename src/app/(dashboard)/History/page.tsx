@@ -191,7 +191,6 @@ export default function History() {
             <div className="flex font-semibold justify-between py-6 text-sm uppercase">
               <span>Total cost</span>
               <span>
-                {" "}
                 {totalPrice !== null ? (
                   <p>₱{(parseInt(totalPrice) + 50).toFixed(2)}</p>
                 ) : (

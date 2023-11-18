@@ -44,17 +44,6 @@ export const Nav = () => {
     }
   }, []);
 
-  /* useEffect(() => {
-    fetch(`https://pharmacyapiendpoint.onrender.com/cart/${userToken}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const totalCount = data.totalCount;
-        setTotalProducts(totalCount);
-        console.log(totalProducts);
-      })
-      .catch((error) => console.error("Error fetching cart total:", error));
-  }, []); */
-
   useEffect(() => {
     // Function to fetch cart total
     const fetchCartTotal = () => {
@@ -68,13 +57,8 @@ export const Nav = () => {
         .catch((error) => console.error("Error fetching cart total:", error));
     };
 
-    // Initial fetch when the component mounts
     fetchCartTotal();
-
-    // Set up an interval to fetch data every 2 seconds
     const intervalId = setInterval(fetchCartTotal, 1000);
-
-    // Cleanup the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, [userToken]);
 
@@ -153,21 +137,6 @@ export const Nav = () => {
                 </Link>
               </li>
 
-              {/*   <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
-                <BsFillHouseGearFill className="text-gray-800" />
-                <Link
-                  className="links"
-                  href={authNav ? "/" : "#About"}
-                  onClick={() => {
-                    setNavOpen(false);
-                    setAuthNav(false);
-                  }}
-                >
-                  NEWS
-                </Link>
-              </li>
- */}
-
               {isLoggedIn ? (
                 <></>
               ) : (
@@ -211,19 +180,24 @@ export const Nav = () => {
                       <p>Loading cart total...</p>
                     )}
                   </li>
-                  <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
-                    <MdWorkHistory className="text-gray-800" />
-                    <Link
-                      className="links"
-                      href={authNav ? "/History" : "/History"}
-                      onClick={() => {
-                        setNavOpen(false);
-                        setAuthNav(false);
-                      }}
-                    >
-                      HISTORY
-                    </Link>
-                  </li>
+                  {totalProducts !== null ? (
+                    <li className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4">
+                      <MdWorkHistory className="text-gray-800" />
+                      <Link
+                        className="links"
+                        href={authNav ? "/History" : "/History"}
+                        onClick={() => {
+                          setNavOpen(false);
+                          setAuthNav(false);
+                        }}
+                      >
+                        HISTORY
+                      </Link>
+                    </li>
+                  ) : (
+                    <></>
+                  )}
+
                   <li
                     onClick={handleLogout}
                     className=" md:bg-gray-50 w-100 bg-gray-50  flex flex-row items-center gap-2 text-sm rounded-md px-4"
