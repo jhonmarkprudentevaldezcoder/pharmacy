@@ -25,6 +25,7 @@ export default function Register() {
     const user = {
       firstname,
       lastname,
+      contact,
       email,
       password: password2, // Use one of the Passwords
     };
