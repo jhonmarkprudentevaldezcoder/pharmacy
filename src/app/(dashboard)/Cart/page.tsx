@@ -123,11 +123,11 @@ export default function Cart() {
   };
 
   return (
-    <div className="container mx-auto md:mt-32 mt-24">
-      <div className="flex flex-col shadow-md my-10 border border-red-900  lg:flex-row">
-        <div className="lg:w-3/4 bg-white md:p-5 lg:px-10 lg:py-10">
+    <div className="md:p-12 mx-auto md:mt-32 mt-24">
+      <div className="flex flex-col shadow-md  border border-red-900  lg:flex-row">
+        <div className="w-full lg:w-3/4 bg-white md:p-5 lg:px-10 lg:py-10">
           <div className="flex justify-between border-b pb-8">
-            <h1 className="font-semibold text-2xl">Shopping Cart</h1>
+            <h1 className="font-semibold text-2xl p-2">Shopping Cart</h1>
             <h2 className="font-semibold text-2xl">
               {" "}
               {totalProducts !== null ? (
@@ -137,10 +137,14 @@ export default function Cart() {
               )}
             </h2>
           </div>
-          <div className="flex  mt-10 mb-5">
-            <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
-              Product Details{" "}
-              {checkOutID !== null ? <p>{checkOutID}</p> : <p></p>}
+          <div className="flex mt-10 mb-5 p-2">
+            <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5  ">
+              Product Details
+              {checkOutID !== null ? (
+                <p className="hidden md:flex">{checkOutID}</p>
+              ) : (
+                <p></p>
+              )}
             </h3>
             <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 ">
               Quantity
@@ -153,7 +157,7 @@ export default function Cart() {
             </h3>
           </div>
 
-          <div>
+          <div className="p-4">
             {cartProducts.map((product) => (
               <div
                 className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5"
@@ -203,7 +207,7 @@ export default function Cart() {
 
           <Link
             href="/"
-            className="flex font-semibold text-indigo-600 text-sm mt-10 p-6da"
+            className="flex font-semibold text-indigo-600 text-sm mt-10 p-6"
           >
             <svg
               className="fill-current mr-2 text-indigo-600 w-4"
