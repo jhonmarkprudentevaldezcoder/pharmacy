@@ -124,7 +124,7 @@ export default function Cart() {
 
   return (
     <div className="md:p-12 mx-auto md:mt-32 mt-24">
-      <div className="flex flex-col shadow-md  border border-red-900  lg:flex-row">
+      <div className="flex flex-col md:shadow-md   lg:flex-row">
         <div className="w-full lg:w-3/4 bg-white md:p-5 lg:px-10 lg:py-10">
           <div className="flex justify-between border-b pb-8">
             <h1 className="font-semibold text-2xl p-2">Shopping Cart</h1>
