@@ -56,46 +56,13 @@ export const Footer = () => {
                     <BsArrowBarRight className="icons text-xl" /> MEDECINE
                   </Link>
                 </li>
-                <li className="mb-1 w-100 md:bg-[#164e63] md:p-0 bg-[#1c2f4e] p-3 rounded-md">
-                  <Link
-                    href="#About"
-                    className="hover:underline  flex flex-row gap-3 items-center"
-                  >
-                    <BsArrowBarRight className="icons text-xl" />
-                    MEDECINE
-                  </Link>
-                </li>
-                <li className="mb-1 w-100 md:bg-[#164e63] md:p-0 bg-[#1c2f4e] p-3 rounded-md">
-                  <Link
-                    target="_blank"
-                    href="https://www.facebook.com/DepEdTayoKVNHS301446"
-                    className="hover:underline  flex flex-row gap-3 items-center"
-                  >
-                    <BsArrowBarRight className="icons text-xl" /> MEDECINE
-                  </Link>
-                </li>
+
                 <li className="mb-1  w-100 md:bg-[#164e63] md:p-0 bg-[#1c2f4e] p-3 rounded-md">
                   <Link
                     href="#"
                     className="hover:underline  flex flex-row gap-3 items-center"
                   >
                     <BsArrowBarRight className="icons text-xl" /> Contact Us
-                  </Link>
-                </li>
-                <li className="mb-1  w-100 md:bg-[#164e63] md:p-0 bg-[#1c2f4e] p-3 rounded-md">
-                  <Link
-                    href="#"
-                    className="hover:underline  flex flex-row gap-3 items-center"
-                  >
-                    <BsArrowBarRight className="icons text-xl" /> Register
-                  </Link>
-                </li>
-                <li className="mb-1  w-100 md:bg-[#164e63] md:p-0 bg-[#1c2f4e] p-3 rounded-md">
-                  <Link
-                    href="#"
-                    className="hover:underline  flex flex-row gap-3 items-center"
-                  >
-                    <BsArrowBarRight className="icons text-xl" /> Login
                   </Link>
                 </li>
               </ul>
