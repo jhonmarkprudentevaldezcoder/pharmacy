@@ -24,6 +24,7 @@ interface CartData {
   history: {
     _id: string;
     userid: string;
+    Orderstatus: string;
     products: CartProduct[];
     totalPrice: number;
     createdAt: string;
@@ -39,6 +40,7 @@ export default function History() {
   const [totalProducts, setTotalProducts] = useState<number | null>(null);
   const [totalPrice, setTotalPrice] = useState<string | null>(null);
   const [checkOutID, setcheckOutID] = useState<string | null>(null);
+  const [checkOutStatus, setcheckOutStatus] = useState<string | null>(null);
   const [userToken, setUserToken] = useState<string | undefined>(
     Cookies.get("userId") || "2323"
   );
@@ -64,7 +66,9 @@ export default function History() {
           const totalCount = data.totalCount;
           const totalCartPrice = data.history.totalPrice;
           const idCheckOut = data.history._id;
+          const stats = data.history.Orderstatus;
           setTotalPrice(String(totalCartPrice));
+          setcheckOutStatus(stats);
           setTotalProducts(totalCount);
           setcheckOutID(idCheckOut);
           setCartProducts(data.history.products);
@@ -85,7 +89,9 @@ export default function History() {
       <div className="flex flex-col md:shadow-md   lg:flex-row">
         <div className="w-full lg:w-3/4 bg-white md:p-5 lg:px-10 lg:py-10">
           <div className="flex justify-between border-b pb-8">
-            <h1 className="font-semibold text-2xl p-2">Shopping History</h1>
+            <h1 className="font-semibold text-2xl p-2">
+              Shopping History {checkOutStatus}
+            </h1>
             <h2 className="font-semibold text-2xl">
               {" "}
               {totalProducts !== null ? (
