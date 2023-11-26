@@ -21,7 +21,7 @@ interface CartProduct {
 }
 
 interface CartData {
-  cart: {
+  history: {
     _id: string;
     userid: string;
     products: CartProduct[];
@@ -58,26 +58,24 @@ export default function History() {
   useEffect(() => {
     // Function to fetch cart total
     const fetchCartTotal = () => {
-      fetch(`https://pharmacyapiendpoint.onrender.com/cart/${userToken}`)
+      fetch(`https://pharmacyapiendpoint.onrender.com/history/${userToken}`)
         .then((response) => response.json())
         .then((data: CartData) => {
           const totalCount = data.totalCount;
-          const totalCartPrice = data.cart.totalPrice;
-          const idCheckOut = data.cart._id;
+          const totalCartPrice = data.history.totalPrice;
+          const idCheckOut = data.history._id;
           setTotalPrice(String(totalCartPrice));
           setTotalProducts(totalCount);
           setcheckOutID(idCheckOut);
-          setCartProducts(data.cart.products);
+          setCartProducts(data.history.products);
         })
         .catch((error) => console.error("Error fetching cart total:", error));
     };
 
     // Initial fetch when the component mounts
     fetchCartTotal();
-
     // Set up an interval to fetch data every 2 seconds
     const intervalId = setInterval(fetchCartTotal, 1000);
-
     // Cleanup the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, [userToken]);
